@@ -1,0 +1,46 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="gc_apartment_list">
+    <field name="name">Apartment list</field>
+    <field name="model">gc.apartment</field>
+    <field name="arch" type="xml">
+      <tree>
+            <field name="name"/>
+            <field name="area"/>
+            <field name="rented"/>
+      </tree>
+    </field>
+    </record>
+
+    <record model="ir.ui.view" id="gc_apartment_form">
+      <field name="name">Apartment form</field>
+      <field name="model">gc.apartment</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <group string="Apartment details">
+              <field name="name"/>
+              <field name="building" attrs="{'readonly' : [('id', '!=', False)]}"/>
+              <field name="rented"/>
+            </group>
+            <group string="Area">
+                <field name="area" />
+            </group>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_gc_real_estate_apartment">
+      <field name="name">Apartment</field>
+      <field name="res_model">gc.apartment</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Apartments" id="menu_gc_real_estate_apartment" parent="gc_real_estate_root"
+      action="action_gc_real_estate_apartment" groups="base.group_user" sequence="2"
+    />
+
+  </data>
+</odoo>

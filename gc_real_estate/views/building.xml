@@ -1,0 +1,57 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="gc_building_list">
+      <field name="name">gc_building list</field>
+      <field name="model">gc.building</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="rental_area"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="gc_building_form">
+      <field name="name">gc_building list</field>
+      <field name="model">gc.building</field>
+      <field name="arch" type="xml">
+        <form>
+          <group string="Building Information">
+            <field name="name"/>
+            <field name="rental_area"/>
+            <label for="street" string="Address"/>
+            <div class="o_address_format">
+                <field name="street" placeholder="Street..." class="o_address_street" />
+                <field name="street2" placeholder="Street 2..." class="o_address_street" />
+                <field name="city" placeholder="City" class="o_address_city" />
+                <field name="state_id" class="o_address_state" placeholder="State"/>
+                <field name="zip" placeholder="ZIP" class="o_address_zip" />
+                <field name="country_id" placeholder="Country" class="o_address_country" />
+            </div>
+          </group>
+          <notebook>
+            <page string="Apartments">
+              <field name="apartment">
+                <field name="name"/>
+                <field name="area"/>
+                <field name="rented"/>
+              </field>
+            </page>
+          </notebook>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_gc_real_estate_building">
+      <field name="name">Building</field>
+      <field name="res_model">gc.building</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Buildings" id="menu_gc_real_estate_building" parent="gc_real_estate_root"
+      action="action_gc_real_estate_building" groups="base.group_user" sequence="1"
+    />
+
+  </data>
+</odoo>

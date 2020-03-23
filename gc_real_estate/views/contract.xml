@@ -1,0 +1,61 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="gc_contract_list">
+      <field name="name">gc_contract list</field>
+      <field name="model">gc.contract</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="tenant"/>
+          <field name="building"/>
+          <field name="apartment" />
+          <field name="start_date"/>
+          <field name="end_date"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="gc_contract_form">
+      <field name="name">gc_contract list</field>
+      <field name="model">gc.contract</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <group string="Contract Information">
+                <field name="tenant"/>
+                <field name="building"/>
+                <field name="apartment" />
+            </group>
+            <group string="Contract Period">
+              <field name="start_date"/>
+              <field name="end_date"/>
+            </group>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_gc_real_estate_contract">
+      <field name="name">Contracts</field>
+      <field name="res_model">gc.contract</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_gc_real_estate_tenant">
+      <field name="name">Tenants</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[('is_tenant','=', True)]</field>
+    </record>
+
+    <menuitem name="Real Estate" id="gc_real_estate_root" groups="base.group_user"/>
+
+    <menuitem name="Contracts" id="menu_gc_real_estate_contract" parent="gc_real_estate_root"
+      action="action_gc_real_estate_contract" groups="base.group_user" sequence="3"
+    />
+    <menuitem name="Tenants" id="menu_gc_real_estate_tenant" parent="gc_real_estate_root"
+      action="action_gc_real_estate_tenant" groups="base.group_user" sequence="4"
+    />
+
+  </data>
+</odoo>

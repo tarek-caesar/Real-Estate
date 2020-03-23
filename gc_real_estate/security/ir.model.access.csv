@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_gc_contract,gc_real_estate.gc_contract,model_gc_contract,base.group_user,1,1,1,1
+access_gc_apartment,gc_real_estate.gc_apartment,model_gc_apartment,base.group_user,1,1,1,1
+access_gc_building,gc_real_estate.gc_building,model_gc_building,base.group_user,1,1,1,1
